@@ -1,6 +1,6 @@
 package org.itcg.library.service.impl;
 
-import org.itcg.library.dao.BookDao;
+import org.itcg.library.dao.BookRepository;
 import org.itcg.library.model.database.Book;
 import org.itcg.library.service.BookService;
 import org.springframework.stereotype.Service;
@@ -9,9 +9,9 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class BookServiceImpl implements BookService {
-  private final BookDao repository;
+  private final BookRepository repository;
 
-  public BookServiceImpl(BookDao repository) {
+  public BookServiceImpl(BookRepository repository) {
     this.repository = repository;
   }
 

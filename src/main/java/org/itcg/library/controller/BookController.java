@@ -2,7 +2,6 @@ package org.itcg.library.controller;
 
 import org.itcg.library.model.database.Book;
 import org.itcg.library.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +20,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/v1/api/books")
 @CrossOrigin("http://localhost:3000")
 public class BookController {
-  @Autowired private BookService service;
+  private final BookService service;
+
+  public BookController(BookService service) {
+    this.service = service;
+  }
 
   @PostMapping
   public ResponseEntity<Mono<Book>> create(@RequestBody Mono<Book> book) {
